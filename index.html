@@ -19,13 +19,63 @@
   </head>
 
   <body>
-    <header>
-      <!-- place navbar here -->
-    </header>
-    <main></main>
-    <footer>
-      <!-- place footer here -->
-    </footer>
+    <div class="container">
+      <h2>Bài tập tính tiền phạt thẻ tín dụng</h2>
+      <div class="mb-3">
+        <label for="" class="form-label">Số tiền vay</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id="soTienVay"
+          aria-describedby="helpId"
+          placeholder="Nhập vào số tiền vay"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Số tiền đã trả</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id="soTienDaTra"
+          aria-describedby="helpId"
+          placeholder="Nhập vào số tiền đã trả"
+        />
+      </div>
+      <button class="btn btn-dark">Tính tiền</button>
+      <p class="bg-danger text-white bg-opacity-75 p-3" id="ketQua"></p>
+    </div>
+
+    <div class="container" id="baiTap2">
+      <h2>Bài tập tính tiền làm trong tuần</h2>
+      <!-- bs5-form-input  -->
+      <div class="mb-3">
+        <label for="" class="form-label">Số tiền làm theo giờ</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id="soTien"
+          aria-describedby="helpId"
+          placeholder="Nhập số tiền làm theo giờ"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Số giờ làm</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id="soGioLam"
+          aria-describedby="helpId"
+          placeholder="Nhập số giờ làm trong tuần"
+        />
+      </div>
+      <button class="btn btn-success">Tính tiền lương</button>
+      <div class="bg-dark text-white p-3 mt-3" id="ketQua2"></div>
+    </div>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
