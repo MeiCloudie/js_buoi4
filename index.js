@@ -106,13 +106,19 @@ document.querySelector("#baiTap2 .btn-success").onclick = function () {
   let soGioLam = document.getElementById("soGioLam").value * 1
   // TH1 : làm việc từ 0 đến 40t ==> soTien * soGioLam
   // TH2: làm việc trên 40t ==> soTien * 40 + (soGioLam - 40) * soTien * 1.5
-  let tongTienLuong = 0
-  if (soGioLam > 40) {
-    tongTienLuong = soTien * 40 + (soGioLam - 40) * soTien * 1.5
-  } else {
-    // 0 < soGioLam <= 40
-    tongTienLuong = soTien * soGioLam
-  }
+  // let tongTienLuong = 0
+  // if (soGioLam > 40) {
+  //   tongTienLuong = soTien * 40 + (soGioLam - 40) * soTien * 1.5
+  // } else {
+  // 0 < soGioLam <= 40
+  //   tongTienLuong = soTien * soGioLam
+  // }
+
+  // Toán tử điều kiện
+  soGioLam > 40
+    ? (tongTienLuong = soTien * 40 + (soGioLam - 40) * soTien * 1.5)
+    : (tongTienLuong = soTien * soGioLam)
+
   // Xử lí đưa dữ liệu lên giao diện
   document.getElementById(
     "ketQua2"
@@ -122,5 +128,89 @@ document.querySelector("#baiTap2 .btn-success").onclick = function () {
       style: "currency",
       currency: "VND",
     }
-  )}`
+  )}, Đánh giá nhân viên này là ${soGioLam > 40 ? "Chăm chỉ" : "Lười biếng"}`
+}
+
+// Thực hiện tạo một layout tính toán điểm co 5 môn Toán Lý Hoá Văn Anh của sinh viên,
+// với điểm trung bình < 5 ==> "Trung bình", 5 <= đ <= 7 ==> "Khá", đ > 7 ==> Giỏi
+document.getElementById("formNhapDiem").onsubmit = function (event) {
+  // Ngăn chặn reload trang khi chạy onsubmit
+  event.preventDefault()
+  // console.log("Tôi là sự kiện Submit")
+  // event.target tương đương câu lệnh DOM
+  // console.log(event.target)
+
+  // Truy xuất dữ liệu
+  let diemToan = document.getElementById("diemToan").value * 1
+  let diemLy = document.getElementById("diemLy").value * 1
+  let diemHoa = document.getElementById("diemHoa").value * 1
+  let diemVan = document.getElementById("diemVan").value * 1
+  let diemAnh = document.getElementById("diemAnh").value * 1
+
+  let diemTrungBinh = (diemToan + diemLy + diemHoa + diemVan + diemAnh) / 5
+
+  let danhGia = ""
+
+  // if (diemTrungBinh < 5) {
+  //   danhGia = "Trung Bình"
+  // }
+
+  // if (diemTrungBinh >= 5 && diemTrungBinh <= 7) {
+  //   danhGia = "Khá"
+  // }
+
+  // if (diemTrungBinh > 7) {
+  //   danhGia = "Giỏi"
+  // }
+
+  if (diemTrungBinh >= 5 && diemTrungBinh <= 7) {
+    danhGia = "Khá"
+  } else if (diemTrungBinh >= 7 && diemTrungBinh <= 9) {
+    danhGia = "Giỏi"
+  } else if (diemTrungBinh > 9) {
+    danhGia = "Siêu Giỏi"
+  } else {
+    danhGia = "Trung Binh"
+  }
+
+  // Clear dữ liệu của các input select trong form
+  event.target.reset()
+}
+
+// Yêu cầu tạo một giao diện cho phép người dùng lựa chọn ai là người sử dụng máy tính
+// ==> Lấy dữ liệu từ người dùng và hiển thị lên câu chào ""
+document.querySelector("#baiTap4 .btn-danger").onclick = function () {
+  let nguoiDung = document.getElementById("nguoiDung").value
+  console.log(nguoiDung)
+  // if (nguoiDung == "Chị Hai") {
+  //   console.log("Hello Cô Hai ...");
+  // } else if (nguoiDung == "Mẹ") {
+  //   console.log("Mẹ ơi cho con 5k");
+  // } else {
+  //   console.log("Chúc ông năm mới vui vẻ");
+  // }
+
+  // Cấu trúc điều kiện switch case
+  switch (nguoiDung) {
+    // case
+    case "Chị Hai":
+      {
+        // những hành động sẽ xảy ra khi nguoiDung là Chị Hai
+        console.log("Hello Cô Hai ...")
+      }
+      break
+    case "Mẹ":
+      {
+        console.log("Mẹ ơi cho con 5k")
+      }
+      break
+    case "Ông":
+      {
+        console.log("Chúc ông năm mới vui vẻ")
+      }
+      break
+    default: {
+      console.log("Ủa ai đang vô máy v")
+    }
+  }
 }
